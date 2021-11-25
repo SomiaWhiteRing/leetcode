@@ -18,20 +18,21 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-  let answer = []
-  let plusLabel = 0
-  for(let i = 0;l1[i] !== undefined && l2[i] !== undefined; i++){
-    if(l1[i] === undefined){l1[i] = 0}
-    if(l2[i] === undefined){l2[i] = 0}
-    let release = l1[i] + l2[i] + plusLabel
-    plusLabel = 0
-    if(release >= 10){
-      release -= 10
-      plusLabel = 1
-    }
-    answer.push(release)
+  let plus = 0
+  let answer = new ListNode('')
+  let l3 = answer
+  while(l1 || l2 || plus){
+    let v1 = l1 ? l1.val : 0
+    let v2 = l2 ? l2.val : 0
+    let submit = v1 + v2 + plus
+    console.log(v1 + '+' + v2 + '+' + plus + '=' + submit)
+    l3.next = new ListNode(submit%10)
+    submit >= 10?plus = 1:plus = 0
+    if(l1){l1 = l1.next}
+    if(l2){l2 = l2.next}
+    l3 = l3.next
   }
-  return(answer)
+  return answer.next
 };
 // @lc code=end
 
