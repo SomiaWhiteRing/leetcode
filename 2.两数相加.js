@@ -17,22 +17,21 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var addTwoNumbers = function(l1, l2) {
+const addTwoNumbers = function (l1, l2) {
   let plus = 0
-  let answer = new ListNode('')
+  const answer = new ListNode('')
   let l3 = answer
-  while(l1 || l2 || plus){
-    let v1 = l1 ? l1.val : 0
-    let v2 = l2 ? l2.val : 0
-    let submit = v1 + v2 + plus
+  while (l1 || l2 || plus) {
+    const v1 = l1 ? l1.val : 0
+    const v2 = l2 ? l2.val : 0
+    const submit = v1 + v2 + plus
     console.log(v1 + '+' + v2 + '+' + plus + '=' + submit)
-    l3.next = new ListNode(submit%10)
-    submit >= 10?plus = 1:plus = 0
-    if(l1){l1 = l1.next}
-    if(l2){l2 = l2.next}
+    l3.next = new ListNode(submit % 10)
+    submit >= 10 ? plus = 1 : plus = 0
+    if (l1) { l1 = l1.next }
+    if (l2) { l2 = l2.next }
     l3 = l3.next
   }
   return answer.next
-};
+}
 // @lc code=end
-

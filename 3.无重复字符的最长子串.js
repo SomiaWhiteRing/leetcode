@@ -9,24 +9,23 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
+const lengthOfLongestSubstring = function (s) {
   let str = ''
   let maxLength = 0
-  for(let k = 0 ;k < s.length ;k++ ){
+  for (let k = 0; k < s.length; k++) {
     str = ''
-    for(let i = k ;i < s.length ;i++ ){
-      if (str.indexOf(s[i]) === -1){
+    for (let i = k; i < s.length; i++) {
+      if (str.indexOf(s[i]) === -1) {
         str += s[i]
-        if(maxLength < str.length){
-          maxLength =str.length
+        if (maxLength < str.length) {
+          maxLength = str.length
         }
-      }else{
+      } else {
         str = ''
         break
       }
     }
   }
   return maxLength
-};
+}
 // @lc code=end
-
