@@ -13,7 +13,7 @@
  * Total Submissions: 1.2M
  * Testcase Example:  '2'
  *
- * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+ * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
  *
  * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
  *
@@ -45,6 +45,14 @@
  * @return {number}
  */
 const climbStairs = function (n) {
-
-};
+  let odd = 1
+  let double = 2
+  for (let i = 2; i < n; i++) {
+    i % 2 ? double = odd + double : odd = odd + double
+  }
+  if (n % 2) {
+    return odd
+  }
+  return double
+}
 // @lc code=end
