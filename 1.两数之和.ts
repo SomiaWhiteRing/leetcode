@@ -60,13 +60,24 @@
 
 // @lc code=start
 function twoSum (nums: number[], target: number): number[] {
-  const release: {} = new Map()
-  for (let i: number = 0; i < nums.length; i++) {
-    if (release[target - nums[i]] !== undefined) {
-      return [i, release[target - nums[i]]]
+  // 定义记录表
+  // 记录表的左侧为差值，右侧为差值对应的下标
+  const note = new Map<number, number>();
+  // 定义指针, 循环到末尾
+  for(let point = 0; point < nums.length; point++) {
+    // 计算当前值
+    const current: number = nums[point]
+    // 查询已记录的差值里是否有当前值
+    if (note.has(current)) {
+      // 若有，返回结果。
+      return [point, note.get(current)!]
+    } else {
+      // 若无，记录差值和下标
+      note.set(target - current, point)
     }
-    release[nums[i]] = i
   }
+  // TS语法兜底
+  return [999, 999]
 };
 // @lc code=end
 export {}
