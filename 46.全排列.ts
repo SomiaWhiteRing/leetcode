@@ -50,9 +50,43 @@
  * 
  */
 
+import { get } from "http"
+
 // @lc code=start
 function permute(nums: number[]): number[][] {
-    
+  /**
+   * 思考区：
+   * 深度遍历构建递归……
+   * 级别1尝试6种，剩下5种让下一级全试一遍
+   * 级别2尝试5种，剩下4种让下一级全试一遍……
+   */
+  // 构建结果集
+  const result: number[][] =  []
+  // 构建结果快照
+  const capture: number[] = []
+  // 构建递归函数
+  function getAll(workList: number[]) {
+    // 如果当前循环到底，跳出
+    if (workList.length === 0) {
+      result.push([...capture])
+    }
+    // 当前递归指针
+    let point: number = 0
+    // 指针推进到头
+    while (point < workList.length) {
+      // 把指针对应的项目推入capture，并从工作列表中移除
+      capture.push(workList[point])
+      const childWorkList =
+        workList.filter(val => val !== workList[point])
+      // 进入下一层递归
+      getAll(childWorkList)
+      // 递归结束，当前层弹出，指针推进
+      capture.pop()
+      point ++
+    }
+  }
+  getAll(nums)
+  return result
 };
 // @lc code=end
 
