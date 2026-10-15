@@ -25,5 +25,10 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-standard": "^5.0.0"
+  },
+  "overrides": {
+    "minimist": "1.2.8",
+    "json5": "1.0.2",
+    "braces": "3.0.3"
   }
 }
